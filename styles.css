@@ -1,0 +1,333 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.container,
+.container-game {
+  background-color: black;
+}
+
+.gameover .btn-playagain,
+.gameover .title,
+.choose .btn-start,
+.intro .movein,
+.intro .title {
+  display: block;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
+  font-style: normal;
+  font-weight: 400;
+  overflow: auto;
+}
+
+.container-game {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.center-abs {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.prelude,
+.intro,
+.choose,
+.battle,
+.gameover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  display: none;
+  
+}
+
+.intro,
+.choose,
+.battle,
+.gameover {
+  opacity: 1;
+  animation: fade 2s linear;
+}
+
+@keyframes fade {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+/* PRELUDE */
+.prelude {
+  background-color: black;
+  display: block;
+}
+
+.prelude-btn {
+  top:40%;
+  left:30%;
+}
+
+/* INTRO */
+.intro {
+  background-image: url("img/intro-no-loop-compressed.gif");
+}
+
+.intro .title {
+  padding-top: 80px;
+  font-size: 30px;
+}
+
+.intro .movein,
+.choose .btn-start,
+.gameover .btn-playagain {
+  font-size: 20px;
+}
+
+.intro .movein {
+  position: absolute;
+  animation: movein 5s ease-out forwards;
+}
+
+@keyframes movein {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 70%;
+  }
+}
+
+/* CHOOSE */
+.choose {
+  background-image: url("img/background-hero.png");
+}
+
+.choose .btn-start {
+  position: absolute;
+  bottom: 2%;
+}
+
+#choose-pokemon-container {
+  padding: 15px;
+}
+
+#choose-pokemon-list {
+  padding-top: 15px;
+}
+
+/* Does it look nice to have a fade in for the 2nd player? */
+.choose .player2-offset {
+  position: absolute;
+  top: 50%;
+  opacity: 1;
+  animation: fade 0.5s linear;
+}
+
+/* BATTLE */
+.battle {
+  background-image: url("img/background-forest.png");
+}
+
+.battle .battle-log {
+  position: absolute;
+  bottom: 0px;
+  width: 99%;
+  height: 180px;
+}
+
+.paragraph-battle-log {
+  width: 50%;
+}
+
+.btn {
+  position: absolute;
+  width: 200px;
+}
+
+.attack-btn {
+  right: 5%;
+  bottom: 50%;
+  display: none;
+}
+
+.boost-btn {
+  right: 5%;
+  bottom: 20%;
+  display: none;
+}
+
+.fight-btn {
+  right: 5%;
+  bottom: 50%;
+}
+
+.current-player-name-number {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.current-player-name-number,
+.target-player-name-number {
+  font-size: 12px;
+}
+
+.current-player-pokemon-status,
+.target-player-pokemon-status {
+  background-color: beige;
+  width: 50%;
+  height: 120px;
+  position: absolute;
+  display: none;
+  opacity: 1;
+  animation: fade 1s linear;
+}
+
+.current-player-pokemon-status {
+  right: 2%;
+  bottom: 185px;
+  padding: 15px;
+}
+
+.target-player-name-number {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.current-player-stats,
+.target-player-stats {
+  display: flex;
+  flex-direction: row;
+}
+
+.current-player-health-stats,
+.current-player-magic-stats,
+.target-player-health-stats,
+.target-player-magic-stats {
+  width: 50%;
+  padding: 10px;
+}
+
+.current-player-pokemon-current-health,
+.current-player-pokemon-total-health,
+.current-player-pokemon-total-magic,
+.current-player-pokemon-current-magic,
+.target-player-pokemon-current-health,
+.target-player-pokemon-total-health,
+.target-player-pokemon-total-magic,
+.target-player-pokemon-current-magic {
+  font-size: 10px;
+}
+
+.target-player-pokemon-status {
+  left: 2%;
+  top: 2%;
+  padding: 15px;
+}
+
+.current-player-pokemon-healthbar,
+.current-player-pokemon-magicbar,
+.target-player-pokemon-healthbar,
+.target-player-pokemon-magicbar {
+  height: 20px;
+}
+
+#current-player-pokemon {
+  position: absolute;
+  top: 35%;
+  left: 1%;
+  height: 250px;
+  object-fit: cover;
+}
+
+#target-player-pokemon {
+  position: absolute;
+  bottom: 55%;
+  right: 1%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.animation-damage {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.animation-attack {
+  animation: attack 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes attack {
+  10%,
+  90% {
+    transform: translate3d(2px, -2px, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(4px, -4px, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(6px, -6px, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(8px, -8px, 0);
+  }
+}
+
+/* GAMEOVER */
+.gameover {
+  background-image: url("img/gameover-compressed.gif");
+  background-position: center;
+}
+
+.gameover .title {
+  padding-top: 20px;
+  padding-bottom: 20px ;
+  font-size: 50px;
+  color: brown;
+}
+
+.gameover .btn-playagain {
+  position: absolute;
+  top: 30%;
+}

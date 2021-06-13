@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <link rel="icon" type="image/png" href="favicon.ico">
+
+  <title>Pokemon Battle</title>
+
+  <!-- snes css -->
+  <link href="css/nes.min.css" rel="stylesheet" />
+
+  <!-- Press Start 2P font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- lodash -->
+  <script src="js/lodash.min.js"></script>
+
+  <!-- our css -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- our scripts -->
+  <script src="index.js"></script>
+  <script src="game.js"></script>
+</head>
+
+<body onload="showPrelude()">
+  <div class="container">
+    <div class="container-game">
+      <!-- prelude -->
+      <div id="prelude" class="prelude">
+        <button type="button" class="nes-btn is-primary btn prelude-btn" onclick="showIntro()">GET READY</button>
+      </div>
+
+      <!-- intro -->
+      <div id="intro" class="intro">
+        <span class="title">Pokemon Lite!</span>
+        <button type="button" class="nes-btn is-success movein center-abs" onclick="showChoose()">Start Game</button>
+      </div>
+
+      <!-- choose pokemon -->
+      <div id="choose" class="choose">
+        <div id="choose-pokemon-container">
+          <span id="choose-player-name">Player 1</span>
+          <span>Choose your pokemon</span>
+          <div id="choose-pokemon-list"></div>
+        </div>
+      </div>
+
+      <!-- battle screen -->
+      <div id="battle" class="battle">
+
+        <div class="current-player-card">
+          <img id="current-player-pokemon">
+          <div id="current-player-pokemon-status" class="nes-container current-player-pokemon-status">
+            <div class="current-player-name-number">
+              <span id="current-player-pokemon-name">pika</span>
+              <span id="current-player-no">P1</span>
+            </div>
+
+            <div class="current-player-stats">
+              <div class="current-player-health-stats">
+                <progress id="current-player-pokemon-healthbar"
+                  class="nes-progress is-success current-player-pokemon-healthbar" value="90" max="100"></progress>
+                <span id="current-player-pokemon-current-health"
+                  class="current-player-pokemon-current-health">100</span> /
+                <span id="current-player-pokemon-total-health" class="current-player-pokemon-total-health">100</span>
+              </div>
+
+              <div class="current-player-magic-stats">
+                <progress id="current-player-pokemon-magicbar"
+                  class="nes-progress is-primary current-player-pokemon-magicbar" value="90" max="100"></progress>
+                <span id="current-player-pokemon-current-magic" class="current-player-pokemon-current-magic">100</span>
+                /
+                <span id="current-player-pokemon-total-magic" class="current-player-pokemon-total-magic">100</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div id="target-player-card">
+          <img id="target-player-pokemon">
+          <div id="target-player-pokemon-status" class="nes-container target-player-pokemon-status">
+            <div class="target-player-name-number">
+              <span id="target-player-pokemon-name">pika</span>
+              <span id="target-player-no">P1</span>
+            </div>
+
+            <div class="target-player-stats">
+              <div class="target-player-health-stats">
+                <progress id="target-player-pokemon-healthbar"
+                  class="nes-progress is-success target-player-pokemon-healthbar" value="90" max="100"></progress>
+                <span id="target-player-pokemon-current-health" class="target-player-pokemon-current-health">100</span>
+                /
+                <span id="target-player-pokemon-total-health" class="target-player-pokemon-total-health">100</span>
+              </div>
+
+              <div class="target-player-magic-stats">
+                <progress id="target-player-pokemon-magicbar"
+                  class="nes-progress is-primary target-player-pokemon-magicbar" value="90" max="100"></progress>
+                <span id="target-player-pokemon-current-magic" class="target-player-pokemon-current-magic">100</span> /
+                <span id="target-player-pokemon-total-magic" class="target-player-pokemon-total-magic">100</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="nes-container is-dark with-title battle-log">
+          <p class="title">Battle log</p>
+          <p id="battle-log" class="paragraph-battle-log">Pokemons!!! have a fair fight. 3...2...1...go</p>
+
+          <button id="attack-btn" type="button" class="nes-btn is-error btn attack-btn"
+            onclick="battleCommand('attack')">Attack</button>
+
+          <button id="boost-btn" type="button" class="nes-btn is-primary btn boost-btn" onclick="battleCommand('boost')">Get
+            Boost</button>
+
+          <button id="fight-btn" type="button" class="nes-btn is-warning btn fight-btn" onclick="startBattle()">Fight!!</button>
+        </div>
+
+      </div>
+
+      <!-- gameover -->
+      <div id="gameover" class="gameover">
+        <span class="title">Game over</span>
+        <span id="game-over-player-win">Player X</span>
+        <button type="button" class="nes-btn is-primary btn-playagain center-abs" onclick="showIntro()">Play
+          again</button>
+      </div>
+
+      <!-- audio player -->
+      <audio id="audio" controls hidden>
+        <source src="audio/battle1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+    </div>
+</body>
+
+</html>
