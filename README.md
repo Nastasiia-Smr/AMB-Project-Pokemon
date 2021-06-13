@@ -4,7 +4,7 @@ A project request from DCI to complete at the end of Programming basics after le
 
 The outcome was created from a group project and the collaborators are included in this repository.
 
-Check the game through github Environment or through [this link](https://brisilda-bushi.github.io/AMB-Project-Pokemon/)!
+Check the game through github Environment or through [this link](https://nastasiia-smr.github.io/AMB-Project-Pokemon/)!
 
 Below you can check some screenshots of the Game.
 
